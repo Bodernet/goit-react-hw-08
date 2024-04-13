@@ -1,18 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import Contact from "../Contact/Contact.jsx";
 import css from "./ContactList.module.css";
 import {
-  selectError,
+  selectPhonebookIsError,
   selectFilteredContacts,
-  selectIsLoading,
-} from "../../redux/contactsSlice.js";
-import { useSelector } from "react-redux";
+  selectPhonebookIsLoading,
+} from "../../redux/contacts/selectors.js";
 import Loader from "../Loader/Loader.jsx";
 import MessageError from "../MessageError/MessageError.jsx";
+import { apiGetUserContacts } from "../../redux/contacts/operations";
 
 const ContactList = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector(selectFilteredContacts);
-  const isError = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectPhonebookIsError);
+  const isLoading = useSelector(selectPhonebookIsLoading);
+
+  useEffect(() => {
+    dispatch(apiGetUserContacts());
+  }, [dispatch]);
 
   return (
     <div>

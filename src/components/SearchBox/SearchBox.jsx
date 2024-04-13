@@ -11,8 +11,9 @@ const SearchBox = () => {
       <p className={css.searchText}> Find contacts by name</p>
       <input
         className={css.searchInput}
+        name="filter"
         type="text"
-        placeholder=""
+        placeholder="Search"
         value={filter}
         onChange={(evt) => dispatch(changeFilter(evt.target.value))}
       />

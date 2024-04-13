@@ -1,9 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { nanoid } from "nanoid";
+import { toast } from "react-hot-toast";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+
 const initialValues = {
   name: "",
   number: "",
@@ -22,16 +21,12 @@ const ContactFormSchema = Yup.object().shape({
     .required("Number is required!"),
 });
 
-const ContactForm = () => {
-  const dispatch = useDispatch();
-
-  const onFormSubmit = (newContact, formAct) => {
-    dispatch(addContact(newContact));
-    formAct.resetForm();
-    formAct.setErrors({});
+const ContactForm = ({ onAddContact }) => {
+  const onFormSubmit = (data, formActions) => {
+    onAddContact(data);
+    toast.success("Contact was added successfully");
+    formActions.resetForm();
   };
-  const nameId = nanoid();
-  const numberId = nanoid();
 
   return (
     <Formik
@@ -41,23 +36,14 @@ const ContactForm = () => {
     >
       <Form className={css.form}>
         <div>
+          <h2 className={css.formTitle}>Add New Contact</h2>
           <label>Name</label>
-          <Field
-            id={nameId}
-            type="text"
-            name="name"
-            placeholder="Serhiy Dykyy"
-          />
+          <Field type="text" name="name" placeholder="Serhiy Dykyy" />
           <ErrorMessage name="name" component="span" />
         </div>
         <div>
           <label>Number</label>
-          <Field
-            id={numberId}
-            type="tel"
-            name="number"
-            placeholder="000-00-00"
-          />
+          <Field type="tel" name="number" placeholder="000-00-00" />
           <ErrorMessage name="number" component="span" />
         </div>
         <button type="submit">Add contact</button>
