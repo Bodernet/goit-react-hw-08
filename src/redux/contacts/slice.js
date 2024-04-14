@@ -43,7 +43,6 @@ const phonebookSlice = createSlice({
       .addCase(apiLogoutUser.fulfilled, () => {
         return INITIAL_STATE;
       })
-
       .addMatcher(
         isAnyOf(
           apiGetUserContacts.pending,

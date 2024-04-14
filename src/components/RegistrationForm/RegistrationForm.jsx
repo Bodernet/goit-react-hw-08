@@ -1,10 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-// import { IoPersonAddSharp } from "react-icons/io5"; // 🤷‍♀️
-
-// import css from './RegistrationForm.module.css';
-
+import css from "./RegistrationForm.module.css";
 import { apiRegisterUser } from "../../redux/auth/operations";
 
 const UserRegisterSchema = Yup.object().shape({
@@ -28,47 +25,67 @@ const INITIAL_FORM_DATA = {
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-
   const onRegister = (formData) => {
     dispatch(apiRegisterUser(formData));
   };
-
-  const handleSubmit = (data, formActions) => {
+  const onSubmit = (data, formActions) => {
     onRegister(data);
     formActions.resetForm();
   };
 
   return (
-    <>
+    <div>
       <Formik
         validationSchema={UserRegisterSchema}
         initialValues={INITIAL_FORM_DATA}
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
       >
-        <Form>
-          <h2>Register</h2>
-
-          <label>
-            <span>User name:</span>
-            <Field placeholder="Alex Mihalich" type="text" name="name" />
-            <ErrorMessage name="name" component="span" />
-          </label>
-          <label>
-            <span>Email:</span>
-            <Field placeholder="alex@patron.com" type="text" name="email" />
-            <ErrorMessage name="email" component="span" />
-          </label>
-          <label>
-            <span>Password:</span>
+        <Form className={css.form}>
+          <h2 className={css.title}>Register</h2>
+          <label className={css.label}>
+            <span className={css.text}>User name:</span>
             <Field
+              className={css.input}
+              placeholder="Bohdan Stupka"
+              type="text"
+              name="name"
+            />
+            <ErrorMessage
+              className={css.errorMsg}
+              name="name"
+              component="span"
+            />
+          </label>
+          <label className={css.label}>
+            <span className={css.text}>Email:</span>
+            <Field
+              className={css.input}
+              placeholder="TarasShevchenko@gmail.com"
+              type="text"
+              name="email"
+            />
+            <ErrorMessage
+              className={css.errorMsg}
+              name="email"
+              component="span"
+            />
+          </label>
+          <label className={css.label}>
+            <span className={css.text}>Password:</span>
+            <Field
+              className={css.input}
               placeholder="Enter your password"
               type="password"
               name="password"
             />
-            <ErrorMessage name="password" component="span" />
+            <ErrorMessage
+              className={css.errorMsg}
+              name="password"
+              component="span"
+            />
           </label>
-
           <button
+            className={css.submitBtn}
             type="submit"
             title="Click to register user"
             aria-label="Register button"
@@ -77,7 +94,7 @@ const RegisterForm = () => {
           </button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };
 

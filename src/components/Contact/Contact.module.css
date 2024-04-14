@@ -1,25 +1,125 @@
-.container {
+.contactContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  min-width: 250px;
+  padding: 0px 10px;
+}
+
+.contactData {
+  display: flex;
+  flex-direction: row;
+}
+
+.contactItem {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-left: 12px;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.buttonEditDel {
+  display: flex;
+  align-items: center;
+  background-color: antiquewhite;
+  border: none;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.buttonEditDel:hover,
+.buttonEditDel:focus {
+  transform: scale(1.1);
+}
+
+.modal {
+  flex-direction: column;
+  gap: 16px;
+  font-size: 18px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+}
+
+.closeModalBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 15px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.closeModalBtn:hover {
+  transform: scale(1.1);
+}
+.text {
+  margin: 0;
+  font-family: Bradley Hand, cursive;
+}
+.modalText {
+  margin: 0;
+  font-family: Bradley Hand, cursive;
+}
+
+.modalForm {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0px 8px;
   min-width: 250px;
 }
+.contDelData {
+  display: flex;
+  gap: 15px;
+}
 
-.contactNameNumber {
+.buttonContainerModal {
+  display: flex;
+  gap: 16px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 8px 0px;
+}
+
+.modalContBtn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modalBtn {
+  font-weight: 500;
+  text-decoration: inherit;
+  margin: 15px, 25px;
+  color: black;
+  padding: 0.5em 1em;
+  transition: background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 5px;
+}
+
+.modalBtn:hover {
+  background-color: darkorange;
+}
+
+.modalForm {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  row-gap: 5px;
-  padding: 5px;
+  gap: 16px;
+  width: 320px;
 }
-.contact {
+.contDelName {
   margin: 0;
-}
-
-.contactBtn {
-  margin: 15px 10px;
-}
-
-.textariae {
-  margin-left: 10px;
+  padding: 10px;
 }

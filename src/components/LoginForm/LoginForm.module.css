@@ -1,0 +1,56 @@
+.form {
+  max-width: 300px;
+  min-width: 200px;
+  margin: 100px auto 0px;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 15px;
+  background-color: whitesmoke;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 18px;
+}
+
+.input {
+  padding: 8px 8px 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 1px solid;
+  background-color: azure;
+}
+.submitBtn {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  height: 30px;
+  border: none;
+  background-color: whitesmoke;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.submitBtn:hover,
+.submitBtn:active {
+  transform: scale(1.1);
+  color: aqua;
+}
+
+.errorMsg {
+  color: orangered;
+  font-size: 14px;
+}

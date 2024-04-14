@@ -6,11 +6,11 @@ import { UserMenu } from "../UserMenu/UserMenu";
 import { AuthNav } from "../AuthNav/AuthNav";
 
 export const AppBar = () => {
-  const isLoggedIn = useSelector(selectUserIsSignedIn);
+  const isSignedIn = useSelector(selectUserIsSignedIn);
   return (
     <header className={css.header}>
       <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      {isSignedIn ? <UserMenu /> : <AuthNav />}
     </header>
   );
 };

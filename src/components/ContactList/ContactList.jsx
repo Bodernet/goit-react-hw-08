@@ -13,25 +13,30 @@ import { apiGetUserContacts } from "../../redux/contacts/operations";
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectFilteredContacts);
   const isError = useSelector(selectPhonebookIsError);
   const isLoading = useSelector(selectPhonebookIsLoading);
-
+  const contacts = useSelector(selectFilteredContacts);
   useEffect(() => {
     dispatch(apiGetUserContacts());
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.cardList}>
       {isError && <MessageError />}
       {isLoading && <Loader />}
-      <ul className={css.cardList}>
-        {contacts.map((contact) => (
-          <li className={css.cardItem} key={contact.id}>
-            <Contact {...contact} />
-          </li>
-        ))}
-      </ul>
+      {contacts === null || contacts.length === 0 ? (
+        <p>There is no list. Add more contacts.</p>
+      ) : (
+        <ul className={css.cardItem}>
+          {contacts.map((contact) => {
+            return (
+              <li key={contact.id}>
+                <Contact {...contact} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };

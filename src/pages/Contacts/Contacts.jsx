@@ -6,13 +6,13 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 
 const Contacts = () => {
   return (
-    <div className={css.container}>
+    <div className={css.containerContacts}>
       <Helmet>
         <title>Your phonebook</title>
       </Helmet>
       <h1 className={css.title}>Your phonebook</h1>
-      <div className={css.infoCont}>
-        <div className={css.functionalCont}>
+      <div className={css.containerData}>
+        <div className={css.containerFormSearch}>
           <ContactForm />
           <SearchBox />
         </div>

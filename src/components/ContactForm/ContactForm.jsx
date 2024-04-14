@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-hot-toast";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
+import { apiAddUserContact } from "../../redux/contacts/operations";
+import { nanoid } from "nanoid";
 
 const initialValues = {
   name: "",
@@ -21,9 +24,18 @@ const ContactFormSchema = Yup.object().shape({
     .required("Number is required!"),
 });
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+  const onAddContacts = (contactData) => {
+    const contactEndData = {
+      ...contactData,
+      id: nanoid(),
+    };
+    dispatch(apiAddUserContact(contactEndData));
+  };
+
   const onFormSubmit = (data, formActions) => {
-    onAddContact(data);
+    onAddContacts(data);
     toast.success("Contact was added successfully");
     formActions.resetForm();
   };
@@ -46,7 +58,9 @@ const ContactForm = ({ onAddContact }) => {
           <Field type="tel" name="number" placeholder="000-00-00" />
           <ErrorMessage name="number" component="span" />
         </div>
-        <button type="submit">Add contact</button>
+        <button className={css.fotmBtn} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );

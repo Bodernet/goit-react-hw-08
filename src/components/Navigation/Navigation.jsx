@@ -7,12 +7,12 @@ import { selectUserIsSignedIn } from "../../redux/auth/selectors";
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectUserIsSignedIn);
   const getNavLinkClassNames = ({ isActive }) =>
-    clsx(css.headerLink, {
+    clsx(css.headerLinc, {
       [css.active]: isActive,
     });
 
   return (
-    <nav className={css.navigation}>
+    <nav className={css.header}>
       <NavLink className={getNavLinkClassNames} to="/">
         Home
       </NavLink>

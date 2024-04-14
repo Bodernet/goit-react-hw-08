@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-
 import {
   setToken,
   clearToken,
@@ -19,9 +18,7 @@ export const apiRegisterUser = createAsyncThunk(
       return data;
     } catch (err) {
       console.log("Not valid email or password");
-      toast.error(
-        "This email address is already in use!"
-      );
+      toast.error("This email address is already in use!");
       return thunkAPI.rejectWithValue(err.message);
     }
   }
@@ -34,24 +31,25 @@ export const apiLoginUser = createAsyncThunk(
       const data = await requestSignIn(formData);
       return data;
     } catch (err) {
-      toast.error(
-        "You are not registered."
-      );
+      toast.error("You are not registered.");
       return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
 
-export const apiLogoutUser = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
-  try {
-    await requestLogOut();
-    clearToken();
-    return;
-  } catch (err) {
-    toast.error("Oooops... Try again later!.");
-    return thunkAPI.rejectWithValue(err.message);
+export const apiLogoutUser = createAsyncThunk(
+  "auth/logout",
+  async (_, thunkAPI) => {
+    try {
+      await requestLogOut();
+      clearToken();
+      return;
+    } catch (err) {
+      toast.error("Oooops... Try again later!.");
+      return thunkAPI.rejectWithValue(err.message);
+    }
   }
-});
+);
 
 export const apiRefreshUser = createAsyncThunk(
   "auth/refresh",
@@ -76,4 +74,3 @@ export const apiRefreshUser = createAsyncThunk(
     },
   }
 );
-
