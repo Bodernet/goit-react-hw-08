@@ -34,7 +34,8 @@ ul {
   display: flex;
   gap: 15px;
   list-style-type: none;
-  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 @media (prefers-color-scheme: light) {
   :root {
